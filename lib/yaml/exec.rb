@@ -1,5 +1,6 @@
 require "yaml/exec/version"
 require 'yaml'
+require 'shellwords'
 
 module Yaml
   module Exec
@@ -21,9 +22,9 @@ module Yaml
         out = @cmd.dup
         hash.each do |value, args|
           cmd_args args, out
-          out.concat " #{value}"
+          out.concat " #{_ value}"
         end
-        system out
+        spawn out
       end
 
       def cmd_args(args, out)
@@ -31,16 +32,18 @@ module Yaml
           case v
           when Hash; cmd_arg_hash(k, v, out)
           when Array
-          else out.concat " --#{k} #{v}"
+          else out.concat " --#{_ k} #{_ v}"
           end
         end
       end
 
       def cmd_arg_hash(key, hash, out)
         hash.each do |k,v|
-          out.concat " --#{key} #{k}=#{v}"
+          out.concat " --#{_ key} #{_ k}=#{_ v}"
         end
       end
+
+      def _(text) Shellwords.escape text end
     end
   end
 end
