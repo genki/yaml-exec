@@ -1,0 +1,6 @@
+web:
+  driver: virtualbox
+  engine-env:
+    HTTP_PROXY: http://example.com:8080
+    HTTPS_PROXY: https://example.com:8080
+    NO_PROXY: example2.com
