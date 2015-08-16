@@ -24,7 +24,7 @@ Or install it yourself as:
 
 ## Example
 
-    $ yaml-exec docker-machine create machines.yml
+    $ yaml-exec echo docker-machine create machines.yml
 
 machines.yml:
 

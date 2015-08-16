@@ -23,7 +23,7 @@ module Yaml
           cmd_args args, out
           out.concat " #{value}"
         end
-        puts out
+        system out
       end
 
       def cmd_args(args, out)
