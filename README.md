@@ -1,8 +1,6 @@
 # Yaml::Exec
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/yaml/exec`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Execute command with complicated arguments in a YAML file.
 
 ## Installation
 
@@ -22,7 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+    $ yaml-exec <command> <yaml file>
+
+## Example
+
+    $ yaml-exec docker-machine create machines.yml
+
+machines.yml:
+
+    web:
+      driver: virtualbox
+      engine-env:
+        HTTP_PROXY: http://example.com:8080
+        HTTPS_PROXY: https://example.com:8080
+        NO_PROXY: example2.com
+
+The output
+
+    docker-machine create --driver virtualbox --engine-env HTTP_PROXY=http://example.com:8080 --engine-env HTTPS_PROXY=https://example.com:8080 --engine-env NO_PROXY=example2.com web
 
 ## Development
 
